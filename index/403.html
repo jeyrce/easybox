@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="none"/>
+    <title>{WEB_TITLE} | 403 Forbidden</title>
+    <style>
+        * {
+            font-family: "Source Han Sans CN", serif;
+            margin: 0;
+            font-weight: lighter;
+            text-decoration: none;
+            text-align: center;
+            line-height: 2.2em;
+        }
+
+        html, body {
+            height: 100%;
+        }
+
+        h1 {
+            font-size: 100px;
+            line-height: 1em;
+        }
+
+        table {
+            width: 80%;
+            height: 100%;
+            border: 0;
+        }
+    </style>
+</head>
+<body>
+<table cellspacing="0" cellpadding="0">
+    <tr>
+        <td>
+            <table cellspacing="0" cellpadding="0">
+                <tr>
+                    <td>
+                        <h1>403</h1>
+                        <h2>本页面禁止访问!</h2>
+                        <h3><strong><span id="time">5</span></strong>秒之后，返回首页...</h3>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+<script>
+    /*
+        分析：
+            1.显示页面效果
+            2.倒计时读秒效果实现
+                2.1 定义一个方法，获取span标签，修改span标签内容，时间...
+                2.2 定义一个定时器，1秒执行一次该方法
+    */
+
+    //2.倒计时读秒效果实现
+    var second = 5;
+    //2.1定义一个方法，获取span标签，修改span标签体内容，时间...
+    var time = document.getElementById("time");
+
+    function showTime() {
+        second--;
+        //判断时间如果<=0，则跳转到指定页面
+        if (second <= 0) {
+            //跳转到指定页面
+            location.href = "/";
+        }
+        time.innerHTML = second + "";
+    }
+
+    //2.2 定义一个定时器，1秒执行一次该方法
+    setInterval(showTime, 1000);
+</script>
+</body>
+</html> 
+

@@ -1,0 +1,9 @@
+.idea/
+README.md
+Makefile
+Dockerfile
+*.tmp
+*.swp
+*.swap
+.DS_Store
+*.log

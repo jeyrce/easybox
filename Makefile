@@ -1,3 +1,0 @@
-
-.phony: all
-all: 
