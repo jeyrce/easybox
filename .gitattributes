@@ -4,3 +4,6 @@
 *.css linguist-language=Dockerfile
 *.py linguist-language=Dockerfile
 *.md linguist-language=Dockerfile
+*.sh linguist-language=Dockerfile
+*.bash linguist-language=Dockerfile
+Makefile linguist-language=Dockerfile
