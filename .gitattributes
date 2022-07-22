@@ -1,9 +1,0 @@
-# 帮助github将项目判别为Dockerfile
-*.html linguist-language=Dockerfile
-*.js linguist-language=Dockerfile
-*.css linguist-language=Dockerfile
-*.py linguist-language=Dockerfile
-*.md linguist-language=Dockerfile
-*.sh linguist-language=Dockerfile
-*.bash linguist-language=Dockerfile
-Makefile linguist-language=Dockerfile
