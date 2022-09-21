@@ -1,0 +1,6 @@
+*.html linguist-language=Dockerfile
+*.js linguist-language=Dockerfile
+*.css linguist-language=Dockerfile
+*.yml linguist-language=Dockerfile
+*.sh linguist-language=Dockerfile
+Makefile linguist-language=Dockerfile
