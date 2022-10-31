@@ -1,0 +1,30 @@
+version: "3"
+
+# 只能使用 docker compose -f ss.yml up -d 方式启动
+# sslocal 必须 host 模式才能生效
+services:
+  server:
+    image: hub.deepin.com/jeyrce/ss:latest
+    command:
+      - /usr/local/bin/ssserver
+      - -p
+      - "8388"
+      - -k
+      - "1234"
+      - -m
+      - rc4-md5
+    network_mode: host
+
+  local:
+    image: hub.deepin.com/jeyrce/ss:latest
+    network_mode: host
+    command:
+      - /usr/local/bin/sslocal
+      - -b
+      - 0.0.0.0
+      - -s
+      - 127.0.0.1
+      - -k
+      - "1234"
+      - -m
+      - rc4-md5
