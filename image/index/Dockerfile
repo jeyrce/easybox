@@ -1,4 +1,4 @@
-FROM --platform=linux/amd64 nginx:1.22.0-alpine
+FROM nginx:1.23.2-alpine
 LABEL Author='Jeyrce Lu<jeyrce@gmail.com>' \
       Repo='https://github.com/jeyrce/easybox'
 ENV WEB_TITLE='数据分发'
