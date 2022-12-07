@@ -4,7 +4,7 @@ ARG commit
 LABEL desc="runner for gitlab-ci" \
       poweredBy="https://github.com/jeyrce/easybox" \
       commit="${commit}"
-RUN apk add bash git make curl && \
+RUN apk add bash git make curl sqlite gcc && \
     make --version && \
     git --version && \
     curl --version && \
