@@ -7,13 +7,13 @@ RUN pip install shadowsocks==2.8.2 \
 
 # ---
 EXPOSE 8388:8388 1080:1080
-CMD ['/usr/local/bin/ssserver',\
-    '-p',\
-    '8388',\
-    '-k',\
-    '1234',\
-    '-m',\
-    'rc4-md5'\
+CMD ["/usr/local/bin/ssserver",\
+    "-p",\
+    "8388",\
+    "-k",\
+    "1234",\
+    "-m",\
+    "rc4-md5"\
 ]
 
 #CMD ['/usr/local/bin/sslocal',
