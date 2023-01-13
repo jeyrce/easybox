@@ -1,0 +1,23 @@
+version: "3.8"
+
+networks:
+  global:
+    driver: overlay
+
+services:
+  clickhouse:
+    image: clickhouse/clickhouse-server:22.3.17.13-alpine
+    environment:
+      CLICKHOUSE_USER: root
+    restart: always
+    ulimits:
+      nofile: 262144
+    ports:
+      - "8123:8123"
+      - "9000:9000"
+    volumes:
+      - ${DATA_DIR}/ch/:/var/lib/clickhouse/
+      - ${DATA_DIR}/ch_log/:/var/log/clickhouse-server/
+      - /etc/localtime:/etc/localtime
+      - /etc/timezone:/etc/timezone
+
