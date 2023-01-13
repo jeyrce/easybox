@@ -15,7 +15,7 @@ services:
       MONGO_INITDB_ROOT_USERNAME: mongo
       MONGO_INITDB_ROOT_PASSWORD: mongo
     volumes:
-      - /data/stack/mongo/:/data/
+      - ${DATA_DIR}/mongo/:/data/
       - /etc/localtime:/etc/localtime
       - /etc/timezone:/etc/timezone
 

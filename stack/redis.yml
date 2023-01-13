@@ -12,6 +12,6 @@ services:
     ports:
       - "6379:6379"
     volumes:
-      - /data/stack/redis/:/data/
+      - ${DATA_DIR}/redis/:/data/
       - /etc/localtime:/etc/localtime
       - /etc/timezone:/etc/timezone

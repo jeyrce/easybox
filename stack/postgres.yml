@@ -14,6 +14,6 @@ services:
       POSTGRES_PASSWORD: postgres
       POSTGRES_USER: postgres
     volumes:
-      - /data/stack/postgres/:/var/lib/postgresql/data/
+      - ${DATA_DIR}/postgres/:/var/lib/postgresql/data/
       - /etc/localtime:/etc/localtime
       - /etc/timezone:/etc/timezone

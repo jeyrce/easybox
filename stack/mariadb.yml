@@ -13,7 +13,7 @@ services:
     ports:
       - "3306:3306"
     volumes:
-      - /data/stack/mysql/:/var/lib/mysql/
+      - ${DATA_DIR}/mysql/:/var/lib/mysql/
       - /etc/localtime:/etc/localtime
       - /etc/timezone:/etc/timezone
 
