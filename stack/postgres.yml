@@ -3,11 +3,14 @@ version: "3.8"
 networks:
   global:
     driver: overlay
+    name: global
 
 services:
   postgres:
     image: postgres:15.1-alpine
     restart: always
+    networks:
+      - global
     ports:
       - "5432:5432"
     environment:

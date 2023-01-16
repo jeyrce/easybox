@@ -3,6 +3,7 @@ version: "3.8"
 networks:
   global:
     driver: overlay
+    name: global
 
 services:
   redis:
@@ -19,6 +20,8 @@ services:
       - "redis"
     ports:
       - "6379:6379"
+    networks:
+      - global
     volumes:
       - ${DATA_DIR}/redis/:/data/
       - /etc/localtime:/etc/localtime
