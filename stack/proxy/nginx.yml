@@ -2,11 +2,10 @@ version: "3.8"
 
 networks:
   global:
-    driver: overlay
-    name: global
+    external: true
 
 services:
-  clickhouse:
+  nginx:
     image: nginx:1.23.3-alpine
     restart: always
     ulimits:
