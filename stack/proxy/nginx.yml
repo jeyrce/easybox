@@ -16,7 +16,7 @@ services:
       - "80:80"
       - "443:443"
     volumes:
-      - ${PWD}/nginx/:/etc/nginx/
+      - ${DATA_DIR}/nginx/:/etc/nginx/
       - /etc/localtime:/etc/localtime
       - /etc/timezone:/etc/timezone
 
