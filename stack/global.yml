@@ -5,4 +5,18 @@ networks:
     driver: overlay
     name: global
 
-services: [ ]
+services:
+  nginx:
+    image: nginx:1.23.3-alpine
+    restart: always
+    ulimits:
+      nofile: 262144
+    networks:
+      - global
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ${DATA_DIR}/nginx/:/etc/nginx/
+      - /etc/localtime:/etc/localtime
+      - /etc/timezone:/etc/timezone
