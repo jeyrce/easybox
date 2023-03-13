@@ -17,6 +17,8 @@ services:
       - "warning"
       - "--requirepass"
       - "redis"
+      - "--bind"
+      - "0.0.0.0"
     ports:
       - "6379:6379"
     networks:
