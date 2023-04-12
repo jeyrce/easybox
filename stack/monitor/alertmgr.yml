@@ -1,0 +1,24 @@
+version: "3.8"
+
+networks:
+  global:
+    external: true
+
+services:
+  alertmanager:
+    image: prom/alertmanager:v0.25.0
+    restart: always
+    ulimits:
+      nofile: 262144
+    networks:
+      - global
+    ports:
+      - "9093:9093"
+    command:
+      - --config.file=/etc/alertmanager/alertmanager.yml
+      - --storage.path=/etc/alertmanager/data
+    volumes:
+      - ${DATA_DIR}/alert/:/etc/alertmanager/
+      - /etc/localtime:/etc/localtime
+      - /etc/timezone:/etc/timezone
+

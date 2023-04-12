@@ -1,0 +1,24 @@
+# node-exporter由于需要访问sys proc等文件，只能使用compose或直接docker run方式启动
+version: "3.8"
+
+networks:
+  global:
+    external: true
+
+services:
+  blackbox-exporter:
+    image: prom/blackbox-exporter:v0.23.0
+    restart: unless-stopped
+    ulimits:
+      nofile: 262144
+    network_mode: host
+    networks:
+      - global
+    ports:
+      - "9115:9115"
+    command:
+      - --config.file=/etc/blackbox_exporter/config.yml
+    volumes:
+      - ${PWD}/exporters/black.yml:/etc/blackbox_exporter/config.yml
+      - /etc/localtime:/etc/localtime
+      - /etc/timezone:/etc/timezone

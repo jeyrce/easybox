@@ -1,0 +1,26 @@
+version: "3.8"
+
+networks:
+  global:
+    external: true
+
+services:
+  prometheus:
+    image: prom/prometheus:v2.43.0
+    restart: always
+    ulimits:
+      nofile: 262144
+    user: root:root
+    networks:
+      - global
+    ports:
+      - "9090:9090"
+    command:
+      - --config.file=/etc/prometheus/prometheus.yml
+      - --storage.tsdb.path=/etc/prometheus/data
+      - --web.enable-lifecycle
+      - --web.enable-admin-api
+    volumes:
+      - ${DATA_DIR}/prom/:/etc/prometheus/
+      - /etc/localtime:/etc/localtime
+      - /etc/timezone:/etc/timezone

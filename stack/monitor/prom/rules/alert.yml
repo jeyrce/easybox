@@ -1,0 +1,13 @@
+groups:
+  - name: default
+    rules:
+      - alert: "TestAlert"
+        expr: count(up{job="prometheus"}) > 1
+        for: 5m
+        labels:
+          severity: info
+        annotations:
+          name: "测试告警信息"
+          summary: "这是一条告警信息的摘要"
+
+

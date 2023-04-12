@@ -1,0 +1,27 @@
+global:
+  scrape_interval: 1m
+  evaluation_interval: 1m
+  scrape_timeout: 30s
+
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets:
+           - alertmanager:9093
+
+rule_files:
+   - "rules/*.yml"
+
+scrape_configs:
+  - job_name: "prometheus"
+    metrics_path: "/metrics"
+    static_configs:
+      - targets: ["localhost:9090"]
+  - job_name: "http"
+    metrics_path: "/metrics"
+    static_configs:
+      - targets:
+          - blackbox-exporter:9115
+    params:
+      module: ["http_2xx"]
+      target: ["http://alertmanager:9093/"]
