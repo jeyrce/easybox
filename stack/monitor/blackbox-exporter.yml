@@ -19,6 +19,6 @@ services:
     command:
       - --config.file=/etc/blackbox_exporter/config.yml
     volumes:
-      - ${PWD}/exporters/black.yml:/etc/blackbox_exporter/config.yml
+      - ${DATA_DIR}/exporters/black.yml:/etc/blackbox_exporter/config.yml
       - /etc/localtime:/etc/localtime
       - /etc/timezone:/etc/timezone
