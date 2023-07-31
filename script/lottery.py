@@ -16,7 +16,6 @@ def result():
     从公开信息获取结果并排序
     :return:
     """
-    return 3, 11, 15, 20, 35, [7, 11]
     res = ()
     resp = requests.get(
         url="https://webapi.sporttery.cn/gateway/lottery/getHistoryPageListV1.qry?gameNo=85&provinceId=0&pageSize=30&isVerify=1&pageNo=1&termLimits=3",
