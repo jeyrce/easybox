@@ -19,6 +19,7 @@ services:
       - "9000:9000"
     volumes:
       - ${DATA_DIR}/ch/:/var/lib/clickhouse/
+      - ${DATA_DIR}/ch_etc/:/etc/clickhouse-server/
       - ${DATA_DIR}/ch_log/:/var/log/clickhouse-server/
       - /etc/localtime:/etc/localtime
       - /etc/timezone:/etc/timezone
