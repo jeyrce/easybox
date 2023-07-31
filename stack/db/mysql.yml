@@ -1,0 +1,21 @@
+version: "3.8"
+
+networks:
+  global:
+    external: true
+
+services:
+  mysql:
+    image: mysql:8.0.34-debian
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    restart: always
+    networks:
+      - global
+    ports:
+      - "3306:3306"
+    volumes:
+      - ${DATA_DIR}/mysql8/:/var/lib/mysql/
+      - /etc/localtime:/etc/localtime
+      - /etc/timezone:/etc/timezone
+
