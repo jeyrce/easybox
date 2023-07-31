@@ -35,7 +35,8 @@ def result():
         return res
     red = sorted(int(i) for i in items[:5])
     blue = sorted(int(j) for j in items[5:])
-    return *red, blue
+    red.append(blue)
+    return red
 
 
 def parse(items, target):
