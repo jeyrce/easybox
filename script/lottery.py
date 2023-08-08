@@ -86,12 +86,15 @@ def notify(msg):
     """
     if msg == "-":
         return ""
+    content = "一线希望: %s" % msg
+    if isinstance(msg, list) and 1 in msg:
+        content = "终于等到你!!!"
     resp = requests.post(
         url="https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=%s" % os.getenv("ROBOT_TOKEN", ""),
         json={
             "msgtype": "text",
             "text": {
-                "content": "一线希望: %s" % msg,
+                "content": content,
             }
         },
     )
