@@ -4,6 +4,7 @@ import os
 import requests
 
 start_at = os.getenv("LOTTERY_START_AT", "2023-07-24")
+times = os.getenv("LOTTERY_TIMES", "15")
 
 tickets = (
     (1, 2, 9, 22, 34, [7, 8]),
@@ -110,7 +111,7 @@ def deadline(start):
     """
     days = 0  # 计算 1、3、6 天数
     end_date = datetime.datetime.strptime(start, "%Y-%m-%d").date()
-    while days < 15:
+    while days <= int(times):
         end_date = end_date + datetime.timedelta(days=1)
         if end_date.weekday() + 1 in [1, 3, 6]:
             days += 1
