@@ -30,8 +30,8 @@ def result():
         return res
     data = resp.json()
     code_str = data.get("value", {}).get("lastPoolDraw", {}).get("lotteryDrawResult", "-")
+    print(code_str)
     if code_str == "-":
-        print(code_str)
         return res
     items = code_str.split(" ")
     if len(items) != 7:
@@ -48,6 +48,8 @@ def parse(items, target):
     分析中奖情况,统计中奖结果
     :return:
     """
+    if len(target) != 5:
+        return []
     red_target = target[:5]
     blue_target = target[5]
     blue_target = [i for i in blue_target]
@@ -85,7 +87,7 @@ def notify(msg):
     通知中奖情况
     :return:
     """
-    if msg == "-":
+    if msg == "-" or len(msg) < 1:
         return ""
     content = "一线希望: %s" % msg
     if isinstance(msg, list) and 1 in msg:
