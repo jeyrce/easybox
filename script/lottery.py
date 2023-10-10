@@ -33,13 +33,14 @@ def result():
     print("code: %s" % code_str)
     if code_str == "-":
         return res
-    items = code_str.split(" ")
+    items = code_str.strip().split(" ")
     if len(items) != 7:
         print("error result")
         return res
     red = sorted(int(i) for i in items[:5])
     blue = sorted(int(j) for j in items[5:])
     red.append(blue)
+    print("red: %s" % red)
     return red
 
 
@@ -48,7 +49,7 @@ def parse(items, target):
     分析中奖情况,统计中奖结果
     :return:
     """
-    if len(target) != 5:
+    if len(target) != 6:
         return []
     red_target = target[:5]
     blue_target = target[5]
