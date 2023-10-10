@@ -26,11 +26,11 @@ def result():
         headers={"content-type": "application/json"},
     )
     if resp.status_code != 200:
-        print(resp.text)
+        print("result: %s" % resp.text)
         return res
     data = resp.json()
     code_str = data.get("value", {}).get("lastPoolDraw", {}).get("lotteryDrawResult", "-")
-    print(code_str)
+    print("code: %s" % code_str)
     if code_str == "-":
         return res
     items = code_str.split(" ")
@@ -79,6 +79,7 @@ def parse(items, target):
             x.append(7)
         else:
             x.append(0)
+    print("parse: %s", x)
     return x
 
 
@@ -88,6 +89,7 @@ def notify(msg):
     :return:
     """
     if msg == "-" or len(msg) < 1:
+        print("skip notify empty msg")
         return ""
     content = "一线希望: %s" % msg
     if isinstance(msg, list) and 1 in msg:
