@@ -22,3 +22,4 @@
 *.db
 *.sqlite
 *.sqlite3
+app/ggzxqr-car/qr/*.png
