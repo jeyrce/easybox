@@ -1,0 +1,56 @@
+version: "3.8"
+
+networks:
+  nginx:
+    external: true
+  mysql:
+    external: true
+
+services:
+  ishare:
+    image: jeyrce/ishare:v1.0.2-final
+    networks:
+      - nginx
+    volumes:
+      - /root/db.sqlite3:/ishare/db.sqlite3
+      - /root/media/:/ishare/media/
+    deploy:
+      replicas: 2
+    logging:
+      options:
+        max-size: 10m
+        max-file: 3
+
+  vv:
+    image: jeyrce/vv-happy-birthday:latest
+    networks:
+      - nginx
+
+  firework:
+    image: jeyrce/firework:latest
+    networks:
+      - nginx
+
+  jeyrce:
+    image: jeyrce/jeyrce:2023-12-07
+    networks:
+      - nginx
+
+  ghost:
+    image: ghost:5.75.2-alpine
+    user: root
+    networks:
+      - nginx
+    volumes:
+      - /root/data/ghost/:/var/lib/ghost/
+      - /root/data/ghost/content:/var/lib/ghost/content
+    environment:
+      NODE_ENV: 'production'
+      url: 'http://imseek.cn/'
+      database__client: mysql
+      database__connection__host: mysql
+      database__connection__database: ghost
+      database__connection__user: root
+      database__connection__password: password
+
+
