@@ -1,0 +1,70 @@
+
+# Ghost 博客反向代理
+imseek.cn, www.imseek.cn {
+    reverse_proxy /* http://ghost:2369 {
+    header_up *                 # 保留原始 Host 头（默认行为）
+    header_down *
+  }
+}
+
+# 通配符子域名重定向
+#*.imseek.cn {
+#    redir https://imseek.cn{url} 302
+#}
+
+# Xoo 站点配置
+xoo.site, www.xoo.site {
+    reverse_proxy /* http://xoo:2369 {
+    header_up *
+    header_down *
+    }
+}
+
+# 通配符子域名重定向
+#*.xoo.site {
+#    redir https://xoo.site{url} 302
+#}
+
+
+# Lujianxin 主站反向代理
+lujianxin.com, www.lujianxin.com {
+    reverse_proxy /* http://jeyrce:80 {
+    header_up *
+    header_down *
+    }
+}
+
+# 其他子域名反向代理
+blog.lujianxin.com {
+    reverse_proxy /* http://ishare:7777 {
+    header_up *
+    header_down *
+    }
+}
+
+vv-happy-birthday.lujianxin.com, poetry.lujianxin.com {
+    reverse_proxy /* http://poetry:80 {
+    header_up *
+    header_down *
+    }
+}
+
+cake.lujianxin.com {
+    reverse_proxy /* http://cake:80 {
+    header_up *
+    header_down *
+    }
+}
+
+firework.lujianxin.com {
+    reverse_proxy /* http://firework:80 {
+    header_up *
+    header_down *
+    }
+}
+
+#*.lujianxin.com {
+#    redir https://lujianxin.com 302
+#}
+
+

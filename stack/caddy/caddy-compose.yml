@@ -1,0 +1,54 @@
+
+
+services:
+  caddy:
+    image: ${REGISTRY}caddy:2.10.0-alpine
+    restart: unless-stopped
+    depends_on:
+      - cake
+      - ishare
+      - poetry
+      - firework
+      - ghost
+      - xoo
+      - jeyrce
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /root/data/caddy/data/:/data/
+      - /root/data/caddy/etc/:/etc/caddy/
+    deploy:
+      replicas: 1
+    logging:
+      options:
+        max-size: 10m
+        max-file: 3
+
+  mysql:
+    image: ${REGISTRY}mysql:8.0.29
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${PASSWORD}
+    volumes:
+      - /var/lib/mysql/:/var/lib/mysql/
+    logging:
+      options:
+        max-size: 10m
+        max-file: 3
+  
+  redis:
+    image: ${REGISTRY}redis:7.0.4-alpine
+    restart: unless-stopped
+    command:
+      - "--requirepass"
+      - ${PASSWORD}
+      - "--appendonly"
+      - "yes"
+    volumes:
+      - /var/lib/redis/data/:/data/
+    logging:
+      options:
+        max-size: 10m
+        max-file: 3
+  
